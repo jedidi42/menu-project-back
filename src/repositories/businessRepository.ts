@@ -1,4 +1,5 @@
 import Business from "../models/business";
+import Menu from "../models/menu";
 
 class BusinessRepository {
   async createBusiness(data: any) {
@@ -18,7 +19,9 @@ class BusinessRepository {
   }
 
   async getAllBusinesses() {
-    return Business.findAll();
+    return Business.findAll({
+      include: [Menu], // Include the related Menu items
+    });;
   }
 }
 

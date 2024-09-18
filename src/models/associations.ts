@@ -1,18 +1,18 @@
 // src/models/associations.ts
 
 import Address from "./address";
-import Banner from "./Banner";
-import Brand from "./Brand";
-import Business from "./Business";
-import Category from "./Category";
+import Banner from "./banner";
+import Brand from "./brand";
+import Business from "./business";
+import Category from "./category";
 import Item from "./item";
-import ItemList from "./ItemList";
-import Menu from "./Menu";
+import ItemList from "./itemList";
+import Menu from "./menu";
 import User from "./user";
 
 // User and Business
-User.hasMany(Business, { foreignKey: "userId" });
-Business.belongsTo(User, { foreignKey: "userId" });
+// User.hasMany(Business, { foreignKey: "userId" });
+// Business.belongsTo(User, { foreignKey: "userId" });
 
 // Business and Address
 Business.hasOne(Address, { foreignKey: "businessId" });

@@ -3,6 +3,8 @@ import userRoutes from "./routes/userRoutes";
 import businessRoutes from "./routes/businessRoutes";
 import authRoutes from "./routes/authRoutes";
 import cors from "cors";
+import './models/associations'; // Import the associations to ensure they are executed
+
 
 const app = express();
 const port = process.env.PORT || 3000;

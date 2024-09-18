@@ -6,6 +6,7 @@ import Address from "./address";
 class Business extends Model {
   public id!: number;
   public businessName!: string;
+  public address!: string;
   public addressId!: number;
 }
 
@@ -16,25 +17,24 @@ Business.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    businessName: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    addressId: {
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    categoryID: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: Address,
-        key: "id",
-      },
     },
   },
   {
     sequelize,
     modelName: "Business",
+    tableName: "businesses",
   }
 );
-
-Business.belongsTo(Address, { foreignKey: "addressId" });
 
 export default Business;

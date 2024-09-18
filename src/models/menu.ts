@@ -22,6 +22,7 @@ Menu.init(
   {
     sequelize,
     modelName: "Menu",
+    tableName: 'menus',
   }
 );
 
