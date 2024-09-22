@@ -4,6 +4,7 @@ import businessRoutes from "./routes/businessRoutes";
 import authRoutes from "./routes/authRoutes";
 import cors from "cors";
 import './models/associations'; // Import the associations to ensure they are executed
+import menuRoutes from "./routes/menuRoutes";
 
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use("/api", userRoutes);
 app.use("/api", businessRoutes);
 app.use("/api/auth", authRoutes);
+app.use('/api', menuRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
