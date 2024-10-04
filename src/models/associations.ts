@@ -39,5 +39,5 @@ Menu.hasMany(Banner, { foreignKey: "menuId" });
 Banner.belongsTo(Menu, { foreignKey: "menuId" });
 
 // Business and Brand
-Business.hasOne(Brand, { foreignKey: "businessId" });
-Brand.belongsTo(Business, { foreignKey: "businessId" });
+Menu.hasOne(Brand, { foreignKey: "menuId" });
+Brand.belongsTo(Menu, { foreignKey: "menuId" });

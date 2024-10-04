@@ -1,6 +1,7 @@
 // src/models/brand.ts
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../database";
+import Menu from "./menu";
 
 class Brand extends Model {
   public id!: number;
@@ -16,6 +17,15 @@ Brand.init(
       autoIncrement: true,
       primaryKey: true,
     },
+    menuId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: Menu,
+        key: "id",
+      },
+    },
+
     primaryColor: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -24,7 +34,7 @@ Brand.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    textFont: {
+    font: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -32,6 +42,7 @@ Brand.init(
   {
     sequelize,
     modelName: "Brand",
+    tableName: "brands",
   }
 );
 

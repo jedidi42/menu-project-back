@@ -18,11 +18,20 @@ Menu.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "New Menu",
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,
     modelName: "Menu",
-    tableName: 'menus',
+    tableName: "menus",
   }
 );
 
