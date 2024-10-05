@@ -8,6 +8,7 @@ class Business extends Model {
   public businessName!: string;
   public address!: string;
   public addressId!: number;
+  public imagePath?: string;
 }
 
 Business.init(
@@ -28,6 +29,10 @@ Business.init(
     categoryID: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    imagePath: {
+      type: DataTypes.STRING,
+      allowNull: true, // Optional attribute
     },
   },
   {
