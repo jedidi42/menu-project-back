@@ -2,21 +2,21 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn('Businesses', 'address', {
+    await queryInterface.addColumn('businesses', 'address', {
       type: Sequelize.STRING,
       allowNull: false,
     });
 
-    await queryInterface.addColumn('Businesses', 'categoryID', {
+    await queryInterface.addColumn('businesses', 'categoryID', {
       type: Sequelize.INTEGER,
       allowNull: false,
     });
 
-    await queryInterface.removeColumn('Businesses', 'addressId');
+    await queryInterface.removeColumn('businesses', 'addressId');
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn('Businesses', 'addressId', {
+    await queryInterface.addColumn('businesses', 'addressId', {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
@@ -25,7 +25,7 @@ module.exports = {
       },
     });
 
-    await queryInterface.removeColumn('Businesses', 'address');
-    await queryInterface.removeColumn('Businesses', 'categoryID');
+    await queryInterface.removeColumn('businesses', 'address');
+    await queryInterface.removeColumn('businesses', 'categoryID');
   }
 };

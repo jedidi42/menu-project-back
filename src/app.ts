@@ -5,11 +5,14 @@ import authRoutes from "./routes/authRoutes";
 import cors from "cors";
 import "./models/associations"; // Import the associations to ensure they are executed
 import menuRoutes from "./routes/menuRoutes";
-import connectDB from "./mongo";
 import menuNoSqlRoutes from "./routes/menuNoSqlRoutes";
 import * as admin from "firebase-admin";
 import uploadRoutes from "./routes/uploadRoutes";
 import qrCodeRoutes from "./routes/qrCodeRoutes";
+import dotenv from "dotenv";
+import connectDB from "./mongo";
+
+dotenv.config(); // Load environment variables from .env file
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,11 +20,13 @@ const port = process.env.PORT || 3000;
 // Connect to MongoDB
 connectDB();
 
-const serviceAccount = require("../menu-app-eaeaf-firebase-adminsdk-mgzca-7792db0706.json");
+const serviceAccount = JSON.parse(
+  process.env.FIREBASE_SERVICE_ACCOUNT as string
+);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: "gs://menu-app-eaeaf.appspot.com", // Replace with your bucket name
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET as string,
 });
 
 const bucket = admin.storage().bucket();
@@ -38,7 +43,6 @@ app.use("/api/nosql", menuNoSqlRoutes);
 app.use("/api", uploadRoutes); // Add the upload routes
 app.use("/api/qrcode", qrCodeRoutes);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
