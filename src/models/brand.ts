@@ -8,6 +8,7 @@ class Brand extends Model {
   public primaryColor!: string;
   public secondaryColor!: string;
   public textFont!: string;
+  public templateId!: number;
 }
 
 Brand.init(
@@ -37,6 +38,11 @@ Brand.init(
     font: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    templateId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1, // Set default value to 1
     },
   },
   {

@@ -13,6 +13,7 @@ interface CategoryNoSqlObj extends Document {
   categoryId: number;
   name: string;
   items: ItemNoSqlObj[];
+  imageUrl: string;
 }
 
 interface MenuNoSqlObj extends Document {
@@ -30,6 +31,7 @@ const ItemSchema: Schema = new Schema({
 const CategorySchema: Schema = new Schema({
   name: { type: String, required: true },
   items: { type: [ItemSchema], required: true },
+  imageUrl: { type: String, required: false },
 });
 
 const MenuSchema: Schema = new Schema({

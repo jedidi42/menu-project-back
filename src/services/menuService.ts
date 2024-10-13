@@ -62,13 +62,13 @@ class MenuService {
 
   async updateMenu(id: number, menuData: any) {
     const menu = await menuRepository.update(id, menuData);
-
+    /** 
     // Update the corresponding NoSQL object
-    await menuNoSqlRepository.update(id, {
-      menuId: id,
-      categories: [], // Update categories as needed
-    });
-
+    // await menuNoSqlRepository.update(id, {
+    //   menuId: id,
+    //   categories: [], // Update categories as needed
+    // });
+    */
     return menu;
   }
   async deleteMenu(id: number) {

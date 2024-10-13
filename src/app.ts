@@ -9,6 +9,7 @@ import connectDB from "./mongo";
 import menuNoSqlRoutes from "./routes/menuNoSqlRoutes";
 import * as admin from "firebase-admin";
 import uploadRoutes from "./routes/uploadRoutes";
+import qrCodeRoutes from "./routes/qrCodeRoutes";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -35,6 +36,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api", menuRoutes);
 app.use("/api/nosql", menuNoSqlRoutes);
 app.use("/api", uploadRoutes); // Add the upload routes
+app.use("/api/qrcode", qrCodeRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
